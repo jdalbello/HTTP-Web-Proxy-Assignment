@@ -163,7 +163,7 @@ while True:
       # ~~~~ INSERT CODE ~~~~
       
       # Connect to origin server on ip: hostname and port: 80
-      originServerSocket.connect(hostname,80)
+      originServerSocket.connect((hostname,80))
       
       
       # ~~~~ END CODE INSERT ~~~~
