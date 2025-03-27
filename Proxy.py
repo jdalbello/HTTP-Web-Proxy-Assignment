@@ -150,7 +150,7 @@ while True:
     # ~~~~ INSERT CODE ~~~~
     
     # Set originServerSocket to IPv4 and TCP
-    originServerSocket = socket(socket.AF_INET, socket.SOCK_STREAM)
+    originServerSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     
     
     # ~~~~ END CODE INSERT ~~~~
