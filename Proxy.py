@@ -35,7 +35,7 @@ try:
   # ~~~~ INSERT CODE ~~~~
   
   # Bind server socket to predefined proxyHost and proxyPort arguments parsed
-  serverSocket.bind(proxyHost, proxyPort)
+  serverSocket.bind((proxyHost, proxyPort))
   
   # ~~~~ END CODE INSERT ~~~~
   print ('Port is bound')
