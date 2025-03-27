@@ -20,6 +20,10 @@ proxyPort = int(args.port)
 try:
   # Create a server socket
   # ~~~~ INSERT CODE ~~~~
+  
+  # Create a server socket with  IPv4 and TCP
+  serverSocket = socket(socket.AF_INET, socket.SOCK_STREAM)
+  
   # ~~~~ END CODE INSERT ~~~~
   print ('Created socket')
 except:
@@ -29,6 +33,10 @@ except:
 try:
   # Bind the the server socket to a host and port
   # ~~~~ INSERT CODE ~~~~
+  
+  # Bind server socket to predefined proxyHost and proxyPort arguments parsed
+  serverSocket.bind(proxyHost, proxyPort)
+  
   # ~~~~ END CODE INSERT ~~~~
   print ('Port is bound')
 except:
@@ -38,6 +46,10 @@ except:
 try:
   # Listen on the server socket
   # ~~~~ INSERT CODE ~~~~
+  
+  # Set server socket to listen to one connection
+  serverSocket.listen(1)
+  
   # ~~~~ END CODE INSERT ~~~~
   print ('Listening to socket')
 except:
@@ -52,6 +64,10 @@ while True:
   # Accept connection from client and store in the clientSocket
   try:
     # ~~~~ INSERT CODE ~~~~
+    
+    # Accept connection from client, stone in clientSocket variable as above
+    clientSocket = serverSocket.accept()
+    
     # ~~~~ END CODE INSERT ~~~~
     print ('Received a connection')
   except:
@@ -61,6 +77,11 @@ while True:
   # Get HTTP request from client
   # and store it in the variable: message_bytes
   # ~~~~ INSERT CODE ~~~~
+  
+  # Recieve HTTP request from clientSocket up to BUFFER_SIZE bytes
+  # Store in message_bytes
+  message_bytes = clientSocket.recv(BUFFER_SIZE)
+  
   # ~~~~ END CODE INSERT ~~~~
   message = message_bytes.decode('utf-8')
   print ('Received request:')
@@ -105,7 +126,7 @@ while True:
 
     fileExists = os.path.isfile(cacheLocation)
     
-    # Check wether the file is currently in the cache
+    # Check whether the file is currently in the cache
     cacheFile = open(cacheLocation, "r")
     cacheData = cacheFile.readlines()
 
@@ -113,6 +134,10 @@ while True:
     # ProxyServer finds a cache hit
     # Send back response to client 
     # ~~~~ INSERT CODE ~~~~
+    
+    # Send client the cache data if the file is currently in the cache
+    clientSocket.sendall(cacheData)
+    
     # ~~~~ END CODE INSERT ~~~~
     cacheFile.close()
     print ('Sent to the client:')
@@ -123,6 +148,7 @@ while True:
     # Create a socket to connect to origin server
     # and store in originServerSocket
     # ~~~~ INSERT CODE ~~~~
+    originServerSocket
     # ~~~~ END CODE INSERT ~~~~
 
     print ('Connecting to:\t\t' + hostname + '\n')
