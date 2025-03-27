@@ -22,7 +22,7 @@ try:
   # ~~~~ INSERT CODE ~~~~
   
   # Create a server socket with  IPv4 and TCP
-  serverSocket = socket(socket.AF_INET, socket.SOCK_STREAM)
+  serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
   
   # ~~~~ END CODE INSERT ~~~~
   print ('Created socket')
