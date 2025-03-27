@@ -66,7 +66,7 @@ while True:
     # ~~~~ INSERT CODE ~~~~
     
     # Accept connection from client, stone in clientSocket variable as above
-    clientSocket = serverSocket.accept()
+    clientSocket, clientAddress = serverSocket.accept()
     
     # ~~~~ END CODE INSERT ~~~~
     print ('Received a connection')
